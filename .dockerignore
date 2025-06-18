@@ -1,0 +1,18 @@
+# GIT
+.git/
+.github/
+
+# Данные IDE
+.idea/
+.vscode/
+
+# Окружения
+venv/
+.venv/
+
+# Кеш
+*.cache
+*.pyc
+
+# Чувствительные данные
+*.env

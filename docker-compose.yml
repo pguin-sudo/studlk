@@ -1,0 +1,43 @@
+services:
+  studlk_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: studlk_server  # Указываем конкретную стадию сборки
+    image: studlk_server:latest
+    ports:
+      - "8000:8000"
+    container_name: studlk_server
+    restart: always
+    depends_on:
+      - studlk_postgres
+    networks:
+      - studlk_network
+    command: 
+      sh -c "studlk/scripts/wait-for-it.sh studlk_postgres:5432 --timeout=300 -- uvicorn studlk.main:app --host 0.0.0.0 --port 8000"
+    env_file: 
+      - .env  # Добавляем env_file для сервера
+
+  studlk_postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    container_name: studlk_postgres
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      TZ: ${TIMEZONE}
+    volumes:
+      - studlk_postgres:/var/lib/postgresql/data
+    networks:
+      - studlk_network
+
+networks:
+  studlk_network:
+    driver: bridge
+
+volumes:
+  studlk_postgres:
