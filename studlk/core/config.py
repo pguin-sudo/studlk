@@ -33,6 +33,7 @@ class Settings(BaseSettings):
     # Подключение к БД
     DATABASE_NAME: str
     DATABASE_HOST: str
+    DATABASE_HOST_DOCKER: str
     DATABASE_PORT: int
     DATABASE_USER: str
     DATABASE_PASSWORD: str

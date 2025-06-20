@@ -6,9 +6,10 @@
 venv/
 .venv/
 
-# Кеш
-*.cache
+# Кеш 
+__pycache__
 *.pyc
+*.cache
 
 # Чувствительные данные
 *.env

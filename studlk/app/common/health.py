@@ -8,4 +8,5 @@ router = APIRouter()
 
 @router.get("", summary="Health check")
 async def health() -> JSONResponse:
+    """Проверка состояния сервиса."""
     return JSONResponse("OK", 200)
