@@ -7,7 +7,7 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
 # model import
-from studlk.app.student.model import *  # noqa: F401
+from studlk.app.student.model import *  # noqa: F401, F403
 from studlk.common.model import Base
 from studlk.database.db import SQLALCHEMY_DATABASE_URL
 

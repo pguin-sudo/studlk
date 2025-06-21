@@ -31,12 +31,14 @@ class Settings(BaseSettings):
     # TODO: Добавить dev и prod environment
 
     # Подключение к БД
-    DATABASE_NAME: str
-    DATABASE_HOST: str
-    DATABASE_HOST_DOCKER: str
-    DATABASE_PORT: int
-    DATABASE_USER: str
-    DATABASE_PASSWORD: str
+    DATABASE_NAME: str = "studlk"
+    DATABASE_HOST: str = "localhost"
+    DATABASE_HOST_DOCKER: str = "studlk_postgres"
+    DATABASE_PORT: int = 5432
+    DATABASE_USER: str = "postgres"
+    DATABASE_PASSWORD: str = (
+        "jNC5tfdUF2jAkpU3Ugt9SWPR7zGxKLjT9fLsdBQFaeMaKTW3kMgsFScCpjx8YKtb"
+    )
 
     # Конфигурация алхимии
     DATABASE_ECHO: bool = False
@@ -45,12 +47,13 @@ class Settings(BaseSettings):
     DATABASE_CHARSET: str = "utf8mb4"
 
     # Данные часового пояса
-    TIMEZONE: str
-    DATETIME_TIMEZONE: str = "Asia/{TIMEZONE}"
+    TIMEZONE: str = "UTC"
+    DATETIME_TIMEZONE: str = TIMEZONE
     DATETIME_FORMAT: str = "%Y-%m-%d %H:%M:%S"
 
     # Логирование
     LOG_FORMAT: str = "%(asctime)s | %(levelname)-8s | %(message)s"
+    LOG_FILE_FORMAT: str = "%(asctime)s | %(levelname)-8s | %(message)s"
     LOG_FILENAME: str = "studlk.log"
     LOG_LEVEL: str = "DEBUG"
 

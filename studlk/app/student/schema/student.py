@@ -2,8 +2,11 @@
 
 from datetime import date
 from enum import Enum
+from typing import NewType
 
 from pydantic import BaseModel, EmailStr, constr
+
+PhoneStr = NewType("PhoneStr", constr(max_length=11))
 
 
 # TODO: Перенести это куда-нибудь - мне не нравится зависимость модели от схемы
@@ -24,7 +27,7 @@ class StudentBaseSchema(BaseModel):
     last_name: str
     birth_date: date
     status: StudentStatus = StudentStatus.ACTIVE
-    contact_phone: constr(max_length=11) | None = None
+    contact_phone: PhoneStr | None = None
     email: EmailStr | None = None
     address: str | None = None
     scholarship: bool = False
@@ -41,7 +44,7 @@ class StudentUpdateSchema(BaseModel):
     last_name: str | None = None
     birth_date: date | None = None
     status: StudentStatus | None = None
-    contact_phone: constr(max_length=11) | None = None
+    contact_phone: PhoneStr | None = None
     email: EmailStr | None = None
     address: str | None = None
     scholarship: bool | None = None

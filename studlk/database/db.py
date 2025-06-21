@@ -39,10 +39,9 @@ def create_async_engine_and_session(
 
     :return: Кортеж (движок, фабрика сессий).
 
-    :raise:
-        SystemExit: При ошибке подключения.
-
+    :raise: SystemExit: При ошибке подключения.
     """
+
     try:
         engine = create_async_engine(
             url,

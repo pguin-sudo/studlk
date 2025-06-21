@@ -117,7 +117,7 @@ async def delete_student(
 
     await db.delete(student)
     await db.commit()
-    return None
+    return {"code": 200, "data": None}
 
 
 @router.delete("/by-status/{status}", response_model=SchemaResponseModel[int])
@@ -134,7 +134,7 @@ async def delete_students_by_status(
         await db.delete(student)
 
     await db.commit()
-    return {"code": 201, "data": len(student)}
+    return {"code": 201, "data": len(students)}
 
 
 @router.get("/by-email/{email}", response_model=SchemaResponseModel[Student])

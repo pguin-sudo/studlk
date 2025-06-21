@@ -25,7 +25,7 @@ class Student(Base):
         index=True,
         comment="Дата рождения",
     )
-    status: StudentStatus = mapped_column(
+    status: Mapped[StudentStatus] = mapped_column(
         Enum(StudentStatus, create_type=True),
         default=StudentStatus.ACTIVE,
         index=True,
